@@ -2,10 +2,10 @@ package structure.kotlin.queue
 
 import structure.Queue
 import structure.java.queue.ArrayQueue
-import structure.kotlin.ArrayKt
+import structure.kotlin.ArrayList
 
 class ArrayQueue<E> constructor(capacity: Int = 10) : Queue<E> {
-    private val array = ArrayKt<E>(capacity)
+    private val array = ArrayList<E>(capacity)
     override fun enQueue(element: E) {
         array.append(element)
     }

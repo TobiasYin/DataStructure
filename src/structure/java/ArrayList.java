@@ -1,15 +1,15 @@
 package structure.java;
 
-public class Array<E> {
+public class ArrayList<E> {
     private E[] data;
     private int size;
 
-    public Array(int capacity) {
+    public ArrayList(int capacity) {
         data = (E[])new Object[capacity];
         size = 0;
     }
 
-    public Array() {
+    public ArrayList() {
         this(10);
     }
 
@@ -35,7 +35,7 @@ public class Array<E> {
 
     public void append(E element) {
 //        if (size == data.length)
-//            throw new IllegalArgumentException("Append failed .Array is full.");
+//            throw new IllegalArgumentException("Append failed .ArrayList is full.");
 //        data[size] = element;
 //        size++;
         insert(size, element);
@@ -117,7 +117,7 @@ public class Array<E> {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(String.format("Array: size = %d,capacity : %d\n", size, data.length));
+        stringBuilder.append(String.format("ArrayList: size = %d,capacity : %d\n", size, data.length));
         stringBuilder.append('[');
         for (int i = 0; i < size; i++) {
             stringBuilder.append(data[i]);

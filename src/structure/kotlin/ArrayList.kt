@@ -1,7 +1,7 @@
 package structure.kotlin
 
 import kotlin.Array
-class ArrayKt<E> @JvmOverloads constructor(capacity: Int = 10) {
+class ArrayList<E> @JvmOverloads constructor(capacity: Int = 10) {
     private var data: Array<E>
     var size: Int = 0
         private set
@@ -27,7 +27,7 @@ class ArrayKt<E> @JvmOverloads constructor(capacity: Int = 10) {
 
     fun append(element: E) {
         //        if (size == data.length)
-        //            throw new IllegalArgumentException("Append failed .Array is full.");
+        //            throw new IllegalArgumentException("Append failed .ArrayList is full.");
         //        data[size] = element;
         //        size++;
         insert(size, element)
@@ -110,7 +110,7 @@ class ArrayKt<E> @JvmOverloads constructor(capacity: Int = 10) {
 
     override fun toString(): String {
         val stringBuilder = StringBuilder()
-        stringBuilder.append(String.format("Array: size = %d,capacity : %d\n", size, data.size))
+        stringBuilder.append(String.format("ArrayList: size = %d,capacity : %d\n", size, data.size))
         stringBuilder.append('[')
         for (i in 0 until size) {
             stringBuilder.append(data[i])
@@ -141,7 +141,7 @@ class ArrayKt<E> @JvmOverloads constructor(capacity: Int = 10) {
 
 
 fun main(args: Array<String>) {
-    val array = ArrayKt<Int>()
+    val array = ArrayList<Int>()
     for (i in 1..20){
         array.append(i)
     }

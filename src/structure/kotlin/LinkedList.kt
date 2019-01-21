@@ -85,7 +85,7 @@ class LinkedList<T>(vararg data: T) {
         return false
     }
 
-    fun remove(index: Int): T {
+    fun removeAt(index: Int): T {
         val pre = getPre(index)
         val delNode = pre.next!!
         pre.next = pre.next!!.next
@@ -94,8 +94,20 @@ class LinkedList<T>(vararg data: T) {
         return delNode.element!!
     }
 
-    fun removeLast() = remove(size - 1)
-    fun removeFirst() = remove(0)
+    fun remove(element: T) {
+        var pre = dummyHead
+        for (i in 1..size) {
+            if (pre.next!!.element == element) {
+                pre.next = pre.next!!.next
+                size--
+                break
+            }
+            pre = pre.next!!
+        }
+    }
+
+    fun removeLast() = removeAt(size - 1)
+    fun removeFirst() = removeAt(0)
 
     override fun toString(): String {
         val result = arrayListOf<T>()
@@ -113,9 +125,9 @@ class LinkedList<T>(vararg data: T) {
 
 fun main(args: kotlin.Array<String>) {
     val linkedListKt = LinkedList<Int>(1, 2, 3, 4, 5, 6)
-    linkedListKt.add(0,3)
+    linkedListKt.add(0, 3)
     linkedListKt[3] = 5
-    println(linkedListKt.remove(4))
+    println(linkedListKt.removeAt(4))
     println(linkedListKt.contains(21))
     println(linkedListKt[3])
     println(linkedListKt)

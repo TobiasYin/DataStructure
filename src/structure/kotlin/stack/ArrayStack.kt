@@ -2,10 +2,10 @@ package structure.kotlin.stack
 
 import structure.Stack
 import structure.java.stack.ArrayStack
-import structure.kotlin.ArrayKt
+import structure.kotlin.ArrayList
 
 class ArrayStack<E> constructor(capacity: Int = 10) : Stack<E> {
-    private val array: ArrayKt<E> = ArrayKt(capacity)
+    private val array: ArrayList<E> = ArrayList(capacity)
     val capacity: Int
         get() = array.capacity
 

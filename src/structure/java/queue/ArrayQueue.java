@@ -1,16 +1,16 @@
 package structure.java.queue;
 
 import structure.Queue;
-import structure.java.Array;
+import structure.java.ArrayList;
 
 public class ArrayQueue<E> implements Queue<E> {
-    private Array<E> array;
+    private ArrayList<E> array;
     public ArrayQueue(){
-        array = new Array<>();
+        array = new ArrayList<>();
     }
 
     public ArrayQueue(int capacity){
-        array = new Array<>(capacity);
+        array = new ArrayList<>(capacity);
     }
 
     @Override

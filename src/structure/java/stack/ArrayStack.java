@@ -1,17 +1,17 @@
 package structure.java.stack;
 
 import structure.Stack;
-import structure.java.Array;
+import structure.java.ArrayList;
 
 public class ArrayStack<E> implements Stack<E> {
-    private Array<E> array;
+    private ArrayList<E> array;
 
     public ArrayStack(int capacity){
-        array = new Array<>(capacity);
+        array = new ArrayList<>(capacity);
     }
 
     public ArrayStack() {
-        array = new Array<>();
+        array = new ArrayList<>();
     }
 
     @Override

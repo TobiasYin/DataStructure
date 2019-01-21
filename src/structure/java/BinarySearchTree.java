@@ -15,7 +15,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             right = null;
         }
     }
-    BinarySearchTree(){
+    public BinarySearchTree(){
         root = null;
         size = 0;
     }
