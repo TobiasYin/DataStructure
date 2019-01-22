@@ -192,6 +192,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (node.right == null){
             Node<T> left = node.left;
             node.left = null;
+            size--;
             return left;
         }
         node.right = removeMax(node.right);
