@@ -1,6 +1,7 @@
 package structure.kotlin
 
 import kotlin.Array
+
 class ArrayList<E> @JvmOverloads constructor(capacity: Int = 10) {
     private var data: Array<E>
     var size: Int = 0
@@ -17,9 +18,9 @@ class ArrayList<E> @JvmOverloads constructor(capacity: Int = 10) {
         size = 0
     }
 
-    private fun resize(length:Int){
+    private fun resize(length: Int) {
         val newData = arrayOfNulls<Any>(length) as Array<E>
-        for(i in 0 until size){
+        for (i in 0 until size) {
             newData[i] = data[i]
         }
         data = newData
@@ -36,7 +37,7 @@ class ArrayList<E> @JvmOverloads constructor(capacity: Int = 10) {
 
     fun insert(index: Int, element: E) {
         if (size == data.size)
-            resize(size*2)
+            resize(size * 2)
         if (index < 0 || index > size)
             throw IllegalArgumentException("Append failed .Require index>=0 and index <= size")
         for (i in size - 1 downTo index)
@@ -55,6 +56,12 @@ class ArrayList<E> @JvmOverloads constructor(capacity: Int = 10) {
         return data[index]
     }
 
+    operator fun set(index: Int, value: E) {
+        if (index < 0 || index > size - 1)
+            throw IllegalArgumentException("Get Failed. Index Out Bounded.")
+        data[index] = value
+    }
+
     fun updata(index: Int, element: E) {
         if (index < 0 || index > size)
             throw IllegalArgumentException("Get Failed. Index Out Bounded.")
@@ -69,8 +76,8 @@ class ArrayList<E> @JvmOverloads constructor(capacity: Int = 10) {
             data[i] = data[i + 1]
         }
         size--
-        if (size<data.size/4 && data.size / 2 != 0){
-            resize(data.size/2)
+        if (size < data.size / 4 && data.size / 2 != 0) {
+            resize(data.size / 2)
         }
         return result
     }
@@ -121,8 +128,8 @@ class ArrayList<E> @JvmOverloads constructor(capacity: Int = 10) {
         return stringBuilder.toString()
     }
 
-    fun getFirst():E = get(0)
-    fun getLast():E = get(size-1)
+    fun getFirst(): E = get(0)
+    fun getLast(): E = get(size - 1)
 
     //    public static void structure.kotlin.main(String[] args) {
     //        int[] arr = new int[10];
@@ -142,10 +149,10 @@ class ArrayList<E> @JvmOverloads constructor(capacity: Int = 10) {
 
 fun main(args: Array<String>) {
     val array = ArrayList<Int>()
-    for (i in 1..20){
+    for (i in 1..20) {
         array.append(i)
     }
-    for (i in 1..20){
+    for (i in 1..20) {
         array.remove(0)
     }
 }
