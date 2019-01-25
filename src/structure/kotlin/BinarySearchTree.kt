@@ -9,7 +9,7 @@ class BinarySearchTree<E : Comparable<E>> {
     private var root: Node<E>? = null
     var size = 0
         private set
-    val empty = size == 0
+    val empty get() = size == 0
 
     fun add(element: E) {
         if (root == null) {
@@ -211,7 +211,7 @@ class BinarySearchTree<E : Comparable<E>> {
         var target: Node<E>? = null
         val stack = Stack<Node<E>>()
         var now = root
-        outer@while (now != null) {
+        outer@ while (now != null) {
             when {
                 element > now.value -> {
                     stack.push(now)
@@ -245,17 +245,17 @@ class BinarySearchTree<E : Comparable<E>> {
                     pre.rightChild = target.rightChild
                     val temp = Stack<Node<E>>()
                     var node = target.rightChild
-                    while (node!=null){
+                    while (node != null) {
                         temp.push(node)
                         node = node.leftChild
                     }
                     node = temp.pop()
                     node.leftChild = target.leftChild
-                }else{
+                } else {
                     pre.leftChild = target.leftChild
                     val temp = Stack<Node<E>>()
                     var node = target.rightChild
-                    while (node!=null){
+                    while (node != null) {
                         temp.push(node)
                         node = node.rightChild
                     }
