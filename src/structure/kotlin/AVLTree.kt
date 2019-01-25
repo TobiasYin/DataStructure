@@ -73,8 +73,9 @@ class AVLTree<K : Comparable<K>, V> {
             node.key < key -> node.rightChild = add(node.rightChild, key, value)
             else -> node.value = value
         }
-
+        val originHeight = node.height
         node.height = 1 + max(getHeight(node.leftChild), getHeight(node.rightChild))
+        if (node.height == originHeight) return node
         val balanceFactor = getBalanceFactor(node)
         return when {
             balanceFactor > 1 && getBalanceFactor(node.leftChild) >= 0 -> rightRotate(node)

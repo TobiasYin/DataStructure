@@ -37,9 +37,10 @@ fun main(args: Array<String>) {
         println(map.isBST())
         for (word in words){
             map.remove(word)
-//            if (!map.isBST() || !map.isBalanced())
-//                throw IllegalArgumentException("Not right")
+            if (!map.isBST() || !map.isBalanced())
+                throw IllegalArgumentException("Not right")
         }
+        println(map.size)
     }
 
     println()
