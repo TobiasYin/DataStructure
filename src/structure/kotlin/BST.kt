@@ -1,8 +1,5 @@
 package structure.kotlin
 
-import structure.kotlin.stack.LinkedStack
-import kotlin.math.max
-
 class BST<K : Comparable<K>, V> {
     private class Node<K, V>(
         val key: K,
@@ -26,11 +23,11 @@ class BST<K : Comparable<K>, V> {
             size++
             return Node(key, value)
         }
-        if (node.key > key)
-            node.leftChild = add(node.leftChild, key, value)
-        else if (node.key < key)
-            node.rightChild = add(node.rightChild, key, value)
-
+        when {
+            node.key > key -> node.leftChild = add(node.leftChild, key, value)
+            node.key < key -> node.rightChild = add(node.rightChild, key, value)
+            else -> node.value = value
+        }
         return node
     }
 
@@ -149,11 +146,17 @@ class BST<K : Comparable<K>, V> {
             node.key > key -> node.leftChild = remove(node.leftChild, key)
             node.key < key -> node.rightChild = remove(node.rightChild, key)
             else -> {
-                var pre:Node<K,V> = node
+                var pre: Node<K, V> = node
                 var min = node.rightChild!!
-                while (min.leftChild!=null){
+                while (min.leftChild != null) {
                     pre = min
                     min = min.leftChild!!
+                }
+                if (pre == node){
+                    min.leftChild = pre.leftChild
+                    node.leftChild = null
+                    node.rightChild = null
+                    return min
                 }
                 pre.leftChild = min.rightChild
                 min.leftChild = node.leftChild
@@ -169,7 +172,7 @@ class BST<K : Comparable<K>, V> {
 
 fun main(args: Array<String>) {
     val binarySearchTree = BST<Int, Int>()
-    val array = intArrayOf(9, 7, 3, 2, 4, 8, 18, 15, 14, 16, 40, 22, 19, 24, 45, 43, 49)
+    val array = intArrayOf(20, 9, 7, 3, 2, 4, 8, 18, 15, 14, 16, 40, 22, 19, 24, 45, 43, 49)
     for (i in array) {
         binarySearchTree.add(i)
     }
