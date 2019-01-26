@@ -169,7 +169,7 @@ class AVLTree<K : Comparable<K>, V> {
     fun removeMax(): K {
         if (size == 0) throw IndexOutOfBoundsException()
         val max = maximum()!!
-        root = remove(root,max)
+        root = remove(root, max)
         return max
     }
 
